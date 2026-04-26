@@ -1,0 +1,45 @@
+add_newline = false
+
+format = """
+╭──$username@$hostname - $directory $git_branch$git_status
+╰─$character
+"""
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "bold #dcd8f5"
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+style = "bold #9cb8e3"
+
+[directory]
+format = "[$path]($style)"
+style = "#a6e3a1"
+truncation_length = 1
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+style = "bold #cba6f7"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "bold #f38ba8"
+format = "($all_status$ahead_behind($style) )"
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+
+[character]
+success_symbol = "[](#94e2d5)"
+error_symbol = "[](#f38ba8)"

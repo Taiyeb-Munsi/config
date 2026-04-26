@@ -1,0 +1,16 @@
+font=JetBrainsMono 12
+border-radius=12
+background-color=#0a0c14dd
+text-color=#cbc5f0
+border-color=#1e1b38
+border-size=2
+padding=8
+margin=10
+border-radius=10
+
+default-timeout=5000
+max-visible=5
+anchor=top-right
+
+icons=1
+icon-location=top

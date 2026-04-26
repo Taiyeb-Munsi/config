@@ -1,0 +1,70 @@
+* {
+    background: #0a0c14;
+    background-alt: #1a1d2e;
+    foreground: #cbc5f0;
+    accent: #edeaff;
+    border: #1e1b20;
+    
+    font: "JetBrainsMono Nerd Font 11";
+}
+
+configuration {
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: " ";
+}
+
+window {
+    width: 600px;
+    border: 2px;
+    border-radius: 12px;
+    background-color: @background;
+    border-color: @border;
+}
+
+mainbox {
+    padding: 20px;
+    spacing: 10px;
+    children: ["inputbar","listview"];
+}
+
+inputbar {
+    padding: 10px;
+    spacing: 10px;
+    background-color: @background-alt;
+    border-radius: 8px;
+    children: ["prompt","entry"];
+}
+
+entry {
+    placeholder: "Search...";
+}
+
+listview {
+    lines: 8;
+    spacing: 5px;
+    cycle: true;
+    scrollbar: false;
+    border: 0px;
+}
+
+element {
+    padding: 8px;
+    spacing: 10px;
+    border-radius: 6px;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: @background-alt;
+    text-color: @foreground;
+}
+
+element-icon {
+    size: 20px;
+}

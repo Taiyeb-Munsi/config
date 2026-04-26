@@ -1,0 +1,88 @@
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+}
+
+@define-color background #0a0c14;
+@define-color background-alt #1a1d2e;
+@define-color foreground #cbc5f0;
+@define-color accent #edeaff;
+@define-color border #1e1b38;
+
+window#waybar {
+    background: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 5px 10px;
+    margin: 5px 5px 0 5px;
+    border-radius: 10px;
+    border: 1.5px solid @border;
+    background-color: @background;
+    box-shadow: 0 0 1px rgba(0,0,0,0.5);
+}
+
+#clock,
+#battery,
+#disk,
+#memory,
+#network,
+#bluetooth {
+    padding: 0 10px;
+    color: @foreground;
+    transition: all 0.25s ease;
+}
+
+#network,
+#bluetooth {
+    padding: 0 5px 0 10px;
+}
+
+#clock:hover,
+#battery:hover,
+#disk:hover,
+#memory:hover,
+#network:hover,
+#bluetooth:hover {
+    color: @accent;
+}
+
+#clock {
+    font-weight: 900;
+}
+
+tooltip {
+    background-color: @background-alt;
+    color: @foreground;
+    border-radius: 6px;
+}
+
+#workspaces {
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: @foreground;
+    transition: all 0.25s ease;
+}
+
+#workspaces button:hover,
+#workspaces button.active {
+    color: @foreground;
+    background: transparent;
+    border: none;
+}
+
+#workspaces button.empty {
+    color: @foreground;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+#battery.warning:not(.charging) {
+    color: #f9e2af;
+}

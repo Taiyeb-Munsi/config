@@ -1,0 +1,62 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["network", "bluetooth", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["memory", "disk", "battery"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": ""
+        },
+        "persistent-workspaces": {
+            "*": [ 1,2,3,4,5 ]
+        }
+    },
+
+    "clock": {
+        "format": "{:%a %d, %I:%M %p}",
+        "tooltip-format": "{:%B %d %Y}"
+    },
+
+    "network": {
+        "format-wifi": "󰖩 ",
+        "format-ethernet": " ",
+        "format-disconnected": "󰖪 ",
+        "tooltip-format-disconnected": "Error",
+        "tooltip-format-wifi": "{essid} - {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 🖧",
+        "on-click": "nmtui"
+    },
+
+    "bluetooth": {
+        "format-on": "󰂯",
+        "format-off": "󰂲",
+        "format-connected": "󰂱 ",
+        "on-click": "blueman-manager"
+    },
+
+    "battery": {
+        "interval": "30",
+        "states": {
+            "good": 90,
+            "warning": 20,
+            "critical": 10,
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁻","󰁼","󰁾","󰂀","󰂂","󰁹"],
+    },
+
+    "memory": {
+        "format": "  {percentage}%",
+        "tooltip-format": "Used : {used:0.1f} GiB\nTotal : {total} GiB"
+    },
+
+    "disk": {
+        "format": " {percentage_used}%",
+    }
+}
