@@ -5,7 +5,7 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
@@ -29,7 +29,7 @@ local autopairs = {
     event = "InsertEnter",
     config = function()
         require("nvim-autopairs").setup({
-            check_ts = true,  
+            check_ts = true,
         })
     end,
 }
@@ -42,7 +42,7 @@ local lualine = {
             options = {
                 theme = "auto",
                 icons_enabled = true,
-                section_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
                 component_separators = { left = "", right = "" },
                 globalstatus = true,
             },
@@ -82,9 +82,9 @@ local cmp = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "L3MON4D3/LuaSnip",             
-        "saadparwaiz1/cmp_luasnip",     
-        "rafamadriz/friendly-snippets", 
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+        "rafamadriz/friendly-snippets",
     },
     config = function()
         local cmp = require("cmp")
@@ -114,8 +114,27 @@ local cmp = {
     end,
 }
 
+local mason = {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    config = function()
+        require("mason").setup()
+    end,
+}
+
+local mason_lspconfig = {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    config = function()
+        require("mason-lspconfig").setup({
+            ensure_installed = { "pyright", "clangd" },
+        })
+    end,
+}
+
 local lspconfig = {
     "neovim/nvim-lspconfig",
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
     config = function()
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -140,16 +159,16 @@ local telescope = {
                 layout_strategy = "horizontal",
                 layout_config = { width = 0.9 },
                 sorting_strategy = "ascending",
-                prompt_prefix = "   ",
+                prompt_prefix = "   ",
             },
         })
     end,
 }
 
 local indentblankline = {
-  "lukas-reineke/indent-blankline.nvim",
-  main = "ibl",
-  opts = {},
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
 }
 
 require("lazy").setup({
@@ -158,6 +177,8 @@ require("lazy").setup({
     lualine,
     treesitter,
     cmp,
+    mason,
+    mason_lspconfig,
     lspconfig,
     telescope,
     indentblankline,
