@@ -29,7 +29,7 @@ local autopairs = {
     event = "InsertEnter",
     config = function()
         require("nvim-autopairs").setup({
-            check_ts = true,
+            check_ts = true,  
         })
     end,
 }
@@ -68,7 +68,7 @@ local treesitter = {
                 "python", "cpp", "c", "lua", "vimdoc", "bash", "json", "yaml", "markdown"
             },
             highlight = { enable = true },
-            indent = { enable = true },
+            indent = { enable = true, disable = { "c", "cpp" } },
             auto_install = true,
         })
     end,
@@ -82,9 +82,9 @@ local cmp = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
+        "L3MON4D3/LuaSnip",             
+        "saadparwaiz1/cmp_luasnip",     
+        "rafamadriz/friendly-snippets", 
     },
     config = function()
         local cmp = require("cmp")
@@ -116,7 +116,6 @@ local cmp = {
 
 local mason = {
     "williamboman/mason.nvim",
-    build = ":MasonUpdate",
     config = function()
         require("mason").setup()
     end,
@@ -124,27 +123,22 @@ local mason = {
 
 local mason_lspconfig = {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    dependencies = {
+        "williamboman/mason.nvim",
+        "neovim/nvim-lspconfig",
+    },
     config = function()
-        require("mason-lspconfig").setup({
-            ensure_installed = { "pyright", "clangd" },
-        })
-    end,
-}
-
-local lspconfig = {
-    "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
-    config = function()
-        local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        lspconfig.pyright.setup({
-            capabilities = capabilities,
-        })
-
-        lspconfig.clangd.setup({
-            capabilities = capabilities,
+        require("mason-lspconfig").setup({
+            ensure_installed = { "pyright", "clangd" },
+            handlers = {
+                function(server_name)
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities,
+                    })
+                end,
+            },
         })
     end,
 }
@@ -159,16 +153,16 @@ local telescope = {
                 layout_strategy = "horizontal",
                 layout_config = { width = 0.9 },
                 sorting_strategy = "ascending",
-                prompt_prefix = "   ",
+                prompt_prefix = "   ",
             },
         })
     end,
 }
 
 local indentblankline = {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
+  "lukas-reineke/indent-blankline.nvim",
+  main = "ibl",
+  opts = {},
 }
 
 require("lazy").setup({
@@ -179,7 +173,6 @@ require("lazy").setup({
     cmp,
     mason,
     mason_lspconfig,
-    lspconfig,
     telescope,
     indentblankline,
 })
