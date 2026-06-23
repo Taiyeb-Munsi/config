@@ -1,0 +1,199 @@
+@define-color bg-base rgba(13, 15, 26, 0.92);
+@define-color bg-card rgba(22, 25, 40, 0.9);
+@define-color bg-hover rgba(30, 33, 56, 0.9);
+@define-color bg-inset #1e2138;
+@define-color border-color #252840;
+@define-color text-main #c4bfe8;
+@define-color text-title #b8d4e8;
+@define-color accent-teal #9dd4cc;
+@define-color accent-pink #e8b8c4;
+@define-color text-on-accent #0d0f1a;
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.control-center {
+    background: @bg-base;
+    border: 1px solid @border-color;
+    border-radius: 14px;
+    color: @text-main;
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+.notification {
+    background: @bg-card;
+    border: 1px solid @border-color;
+    border-radius: 10px;
+    margin: 6px;
+    padding: 10px;
+}
+
+.notification-content {
+    background: transparent;
+}
+
+.notification-title {
+    color: @text-title;
+}
+
+.notification-body {
+    color: @text-main;
+}
+
+.notification-default-action:hover {
+    background: @bg-hover;
+    border-radius: 10px;
+}
+
+.notification-group-header {
+    color: @accent-teal;
+}
+
+.notification-row {
+    outline: none;
+    background: transparent;
+    border-radius: 10px;
+}
+
+.notification-row:hover,
+.notification-row:focus,
+.notification-row:selected {
+    background: @bg-hover;
+    box-shadow: none;
+}
+
+.close-button {
+    background: @border-color;
+    color: @text-main;
+    border-radius: 999px;
+}
+
+.close-button:hover {
+    background: @accent-pink;
+    color: @text-on-accent;
+}
+
+.widget-title {
+    color: @text-title;
+}
+
+.widget-title > button {
+    background: @bg-inset;
+    color: @text-main;
+    border: 1px solid @border-color;
+    border-radius: 999px;
+}
+
+.widget-title > button:hover {
+    background: @bg-hover;
+    border-color: @accent-teal;
+}
+
+.widget-dnd {
+    background: transparent;
+}
+
+.widget-dnd switch {
+    background: @border-color;
+    border-radius: 999px;
+}
+
+.widget-dnd switch:checked {
+    background: @accent-teal;
+}
+
+.notification.critical {
+    border: 1px solid @accent-pink;
+}
+
+.notification.low {
+    opacity: 0.9;
+}
+
+.widget-backlight,
+.widget-volume {
+    background: @bg-card;
+    border: 1px solid @border-color;
+    border-radius: 10px;
+    margin: 8px 6px;
+    padding: 12px 14px;
+}
+
+.widget-backlight label,
+.widget-volume label {
+    color: @text-title;
+    margin-right: 8px;
+    min-width: 90px;
+}
+
+.widget-backlight scale,
+.widget-volume scale {
+    background: @bg-inset;
+    border-radius: 999px;
+    padding: 2px;
+}
+
+.widget-backlight scale trough,
+.widget-volume scale trough {
+    background: @border-color;
+    border-radius: 999px;
+    min-height: 6px;
+}
+
+.widget-backlight scale highlight,
+.widget-volume scale highlight {
+    background: @accent-teal;
+    border-radius: 999px;
+}
+
+.widget-backlight scale slider,
+.widget-volume scale slider {
+    background: @text-main;
+    border: 2px solid @accent-teal;
+    border-radius: 999px;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+.widget-mpris {
+    background: @bg-card;
+    border: 1px solid @border-color;
+    border-radius: 10px;
+    margin: 8px 6px;
+    padding: 12px;
+    color: @text-main;
+}
+
+.widget-mpris-title {
+    color: @text-title;
+    font-size: 13px;
+}
+
+.widget-mpris-subtitle {
+    color: @accent-teal;
+    font-size: 11px;
+}
+
+.widget-mpris button {
+    background: @bg-inset;
+    color: @text-main;
+    border: 1px solid @border-color;
+    border-radius: 999px;
+    padding: 6px 10px;
+    margin: 2px;
+}
+
+.widget-mpris button:hover {
+    background: @bg-hover;
+    border-color: @accent-teal;
+}
+
+.widget-mpris image {
+    -gtk-icon-size: 18px;
+}

@@ -1,0 +1,33 @@
+font-size = 10
+font-family = JetBrainsMono Nerd Font
+
+background-opacity = 0.85
+background-blur = 100
+
+background = #0d0f1a
+foreground = #c4bfe8
+
+cursor-color = #b8d4e8
+cursor-style = underline
+
+palette = 0=#0d0f1a
+palette = 1=#e8b8c4
+palette = 2=#9dd4cc
+palette = 3=#e8d4a8
+palette = 4=#b8d4e8
+palette = 5=#c9b8e8
+palette = 6=#9dd4cc
+palette = 7=#c4bfe8
+palette = 8=#252840
+palette = 9=#f0ccd6
+palette = 10=#b8e8e0
+palette = 11=#f0e4c0
+palette = 12=#cce4f4
+palette = 13=#ddd0f8
+palette = 14=#b8e8e0
+palette = 15=#edeaff
+
+window-padding-x = 12
+window-padding-y = 10
+
+command = /bin/zsh

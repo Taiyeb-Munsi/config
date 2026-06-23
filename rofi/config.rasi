@@ -1,57 +1,66 @@
 * {
-    background: #0a0c14;
-    background-alt: #1a1d2e;
-    foreground: #cbc5f0;
-    accent: #edeaff;
-    border: #1e1b20;
-    
+    background: #0d0f1a;
+    background-alt: #161928;
+    foreground: #c4bfe8;
+    accent: #b8d4e8;
+    selected-bg: #1e2138;
+    border-col: #252840;
+    placeholder-col: #6b6890;
     font: "JetBrainsMono Nerd Font 11";
 }
 
 configuration {
     show-icons: true;
     icon-theme: "Papirus";
-    display-drun: " ";
+    display-drun: " ";
 }
 
 window {
     width: 600px;
-    border: 2px;
-    border-radius: 12px;
+    border: 1px;
+    border-radius: 14px;
     background-color: @background;
-    border-color: @border;
+    border-color: @border-col;
 }
 
 mainbox {
     padding: 20px;
-    spacing: 10px;
-    children: ["inputbar","listview"];
+    spacing: 12px;
+    children: ["inputbar", "listview"];
 }
 
 inputbar {
-    padding: 10px;
+    padding: 10px 14px;
     spacing: 10px;
     background-color: @background-alt;
-    border-radius: 8px;
-    children: ["prompt","entry"];
+    border-radius: 10px;
+    border: 1px;
+    border-color: @border-col;
+    children: ["prompt", "entry"];
+}
+
+prompt {
+    text-color: @accent;
 }
 
 entry {
     placeholder: "Search...";
+    placeholder-color: @placeholder-col;
+    text-color: @foreground;
 }
 
 listview {
     lines: 8;
-    spacing: 5px;
+    spacing: 4px;
     cycle: true;
     scrollbar: false;
     border: 0px;
 }
 
 element {
-    padding: 8px;
+    padding: 8px 12px;
     spacing: 10px;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 element normal.normal,
@@ -61,10 +70,14 @@ element alternate.normal {
 }
 
 element selected.normal {
-    background-color: @background-alt;
-    text-color: @foreground;
+    background-color: @selected-bg;
+    text-color: @accent;
 }
 
 element-icon {
     size: 20px;
+}
+
+element-text {
+    vertical-align: 0.5;
 }

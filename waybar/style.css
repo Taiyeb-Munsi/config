@@ -1,27 +1,22 @@
 * {
-    font-family: "JetBrainsMono Nerd Font";
+    font-family: "JetBrainsMono Nerd Font", "Roboto";
     font-size: 12px;
+    font-weight: bold;
 }
 
-@define-color background #0a0c14;
-@define-color background-alt #1a1d2e;
-@define-color foreground #cbc5f0;
-@define-color accent #edeaff;
-@define-color border #1e1b38;
+@define-color bg_main rgba(25, 28, 41, 0.9);
+@define-color bg_modules rgba(30, 34, 51, 0.6);
+@define-color border_color rgba(25, 48, 70, 1.0);
+
+@define-color text_main #cdd6f4;
+@define-color color_primary #b4befe;
+@define-color color_sec #94e2d5;
+@define-color color_accent #ca9ee6;
+@define-color color_green #a6e3a1;
+@define-color color_red #f38ba8;
 
 window#waybar {
     background: transparent;
-}
-
-.modules-left,
-.modules-center,
-.modules-right {
-    padding: 5px 10px;
-    margin: 5px 5px 0 5px;
-    border-radius: 10px;
-    border: 1.5px solid @border;
-    background-color: @background;
-    box-shadow: 0 0 1px rgba(0,0,0,0.5);
 }
 
 #clock,
@@ -29,60 +24,114 @@ window#waybar {
 #disk,
 #memory,
 #network,
-#bluetooth {
-    padding: 0 10px;
-    color: @foreground;
-    transition: all 0.25s ease;
-}
-
-#network,
-#bluetooth {
-    padding: 0 5px 0 10px;
-}
-
-#clock:hover,
-#battery:hover,
-#disk:hover,
-#memory:hover,
-#network:hover,
-#bluetooth:hover {
-    color: @accent;
+#bluetooth,
+#workspaces {
+    background-color: @bg_main;
+    border: 2px solid @border_color;
+    padding: 6px 12px;
+    margin: 4px 4px;
+    border-radius: 10px;
+    color: @text_main;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 #clock {
-    font-weight: 900;
+    color: @color_primary;
+    padding: 6px 20px;
 }
 
-tooltip {
-    background-color: @background-alt;
-    color: @foreground;
-    border-radius: 6px;
+#network {
+    color: @color_sec;
+}
+#network.disconnected {
+    color: @color_red;
 }
 
-#workspaces {
-    padding: 0;
+#bluetooth {
+    color: @color_primary;
+}
+#bluetooth.off {
+    color: rgba(255, 255, 255, 0.3);
 }
 
-#workspaces button {
-    padding: 0 10px;
-    color: @foreground;
-    transition: all 0.25s ease;
+#memory {
+    color: @color_accent;
 }
 
-#workspaces button:hover,
-#workspaces button.active {
-    color: @foreground;
-    background: transparent;
-    border: none;
+#disk {
+    color: #89b4fa;
 }
 
-#workspaces button.empty {
-    color: @foreground;
+#battery {
+    color: @color_green;
 }
-
 #battery.charging {
-    color: #a6e3a1;
+    color: @color_sec;
 }
 #battery.warning:not(.charging) {
     color: #f9e2af;
+}
+#battery.critical:not(.charging) {
+    color: @color_red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock:hover,
+#network:hover,
+#bluetooth:hover,
+#memory:hover,
+#disk:hover,
+#battery:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 15px;
+    color: @text_main;
+    opacity: 0.5;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    opacity: 0.9;
+    color: @color_primary;
+}
+
+#workspaces button.active {
+    color: @color_primary;
+    opacity: 1;
+}
+
+#workspaces button.empty {
+    opacity: 0.25;
+}
+
+tooltip {
+    background: #181825;
+    border: 1px solid @color_primary;
+    border-radius: 10px;
+}
+tooltip label {
+    color: @text_main;
+    padding: 6px;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(243, 139, 168, 0.4);
+        color: @text_main;
+    }
 }

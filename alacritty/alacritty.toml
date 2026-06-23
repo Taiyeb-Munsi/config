@@ -5,3 +5,8 @@ y = 10
 [colors.primary]
 background = "#ffffff"
 foreground = "#000000"
+
+[terminal]
+
+[terminal.shell]
+program = "/bin/bash"

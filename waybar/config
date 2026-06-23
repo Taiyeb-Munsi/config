@@ -23,9 +23,9 @@
     },
 
     "network": {
-        "format-wifi": "󰖩 ",
-        "format-ethernet": " ",
-        "format-disconnected": "󰖪 ",
+        "format-wifi": " 󰖩  ",
+        "format-ethernet": "   ",
+        "format-disconnected": " 󰖪  ",
         "tooltip-format-disconnected": "Error",
         "tooltip-format-wifi": "{essid} - {signalStrength}%",
         "tooltip-format-ethernet": "{ifname} 🖧",
@@ -33,9 +33,9 @@
     },
 
     "bluetooth": {
-        "format-on": "󰂯",
-        "format-off": "󰂲",
-        "format-connected": "󰂱 ",
+        "format-on": " 󰂯 ",
+        "format-off": " 󰂲 ",
+        "format-connected": " 󰂱 ",
         "on-click": "blueman-manager"
     },
 
@@ -44,11 +44,11 @@
         "states": {
             "good": 90,
             "warning": 20,
-            "critical": 10,
+            "critical": 10
         },
         "format": "{icon} {capacity}%",
         "format-charging": "󰂄 {capacity}%",
-        "format-icons": ["󰁻","󰁼","󰁾","󰂀","󰂂","󰁹"],
+        "format-icons": ["󰁻","󰁼","󰁾","󰂀","󰂂","󰁹"]
     },
 
     "memory": {
@@ -57,6 +57,6 @@
     },
 
     "disk": {
-        "format": " {percentage_used}%",
+        "format": " {percentage_used}%"
     }
 }
